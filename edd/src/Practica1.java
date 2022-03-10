@@ -4,23 +4,84 @@ import java.util.Iterator;
 
 public class Practica1 {
     
-
-
-    // Aqui va tu comentario
+    /**
+     * AgregaOrdenado: Dada una lista ordenada y un elemento nuevo, se agrega dicho elemento de manera ordena
+     * Tiempo O(n)
+     * Es lineal ya que el while se hace recorriendo el tamaño de la lista
+     * Espacio O(1) 
+     *Cumple que el espacio sea constante ya que se trabaja sobre la misma lista.
+     **/
     public static Lista<Integer> AgregaOrdenado(Lista<Integer> lista, int nuevo) {
-        //Tu codigo aqui
+	Iterator<Integer> iterator = lista.iterator();
+	    int posicion = 0;
+	    //lista.add(nuevo);
+	    lista.insert(posicion, nuevo);
+	    while(iterator.hasNext()){
+		if(nuevo <= lista.next()){ 
+		    lista.next() = nuevo;
+		    lista.next() = lista.next.next();
+		}else{
+		    lista.next() = lista.next.next();
+		    //nuevo = lista.start;
+		}//Fin if-else	    
+	    }//Fin while
         return null;
-    }
+	}
 
-    // Aqui va tu comentario
+    /**
+     * Unión: Regresa una lista que contiene los elementos de dos listas dadas, quita los duplicados
+     *
+     * Tiempo O(n*m)
+     * Al momento de estar comparando entre las listas se genera el tiempo O(n*m)
+     * Espacio O(n+m)
+     * Es de este estilo ya que "pegamos" las listas y entonces se suma el espacio de la primera con el espacio de la segunda
+     *
+     * Como mejorarias el tiempo de union
+     * Una forma de mejorar este algoritmo podria ser aplicar un ordenamiento para que el manejo de la lista sea mucho mas facil 
+     * y asi poder cubrir una mayor cantidad de casos y evitar que el algoritmo sea fácil de "romper"
+     **/
     public static void Union(Lista<Integer> lista1,Lista<Integer> lista2) {
-         return ;
+
+	Iterator<Integer> iterator = lista.iterator();
+
+	while(iterator.hasNext()){
+	    if(lista1.contains(lista2.next())){
+		lista2.pop(lista2.next());
+		lista2.next() = lista.next.next();		
+	    }else{
+		lista1.add(lista2.next());
+		lista2.next = lista.next.next();		
+	    }//fin if-else
+	}//Fin while
+	return;
     }
 
-    // Aqui va tu comentario
-    public static void Interseccion(Lista<Integer> lista,Lista<Integer> lista2) {
-        
-        return ;
+    /**
+     * Interseccion: Dadas dos listas de enteros nos devuelve los elementos que se encuentran en ambas listas
+     *
+     * Tiempo O(n*m)
+     * Al momento de estar comparando entre las listas se genera el tiempo O(n*m)
+     * Espacio O(n) siendo n mayor que m de otra forma sera O(m)
+     * A la lista uno se le van quitando esos elementos y a la lista dos se le agregan
+     *
+     * b. Como mejorarias el tiempo de intersección
+     * Implementando un algoritmo que nos permita al unir las listas hacerlo de manera ordenada, lo que haria mas facil hacer una comparacion
+     * de los elementos al recorrerlo y de esta manera, poder notar que elementos no se encuentran repetidos, eliminarlos y después eliminar los duplicados.
+     **/
+    public static void Interseccion(Lista<Integer> lista,Lista<Integer> lista2){
+
+	Iterator<Integer> iterator = lista.iterator();
+
+	while(iterator.hasNext()){
+	    if(lista.contains(lista2.next())){
+		lista.add(lista2.next());
+		lista2.next() = lista.next.next();		
+	    }else{
+		lista2.pop(lista2.next());
+		lista2.next() = lista.next.next;		
+	    }//Fin if-else
+	}//Fin while
+	return;
     }
 
 
