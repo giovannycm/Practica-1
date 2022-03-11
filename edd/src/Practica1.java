@@ -11,23 +11,20 @@ public class Practica1 {
      * Espacio O(1) 
      *Cumple que el espacio sea constante ya que se trabaja sobre la misma lista.
      **/
-    public static Lista<Integer> AgregaOrdenado(Lista<Integer> lista, int nuevo) {
-	Iterator<Integer> iterator = lista.iterator();
-	    int posicion = 0;
-	    //lista.add(nuevo);
-	    lista.insert(posicion, nuevo);
-	    while(iterator.hasNext()){
-		if(nuevo <= lista.next()){ 
-		    lista.next() = nuevo;
-		    lista.next() = lista.next.next();
-		}else{
-		    lista.next() = lista.next.next();
-		    //nuevo = lista.start;
-		}//Fin if-else	    
-	    }//Fin while
-        return null;
-	}
+    public static Lista<Integer> AgregaOrdenado(Lista<Integer> lista, int nuevo){
+	    Iterator<Integer> iter = lista.iterator();	
 
+	while(iter.hasNext()){
+	    if(nuevo <= iter.next()){ 
+		Integer posicion = iter.next();
+		lista.insert(nuevo, posicion);
+	    }else{
+		iter.next();
+	    }//Fin if-else	    
+	}//Fin while
+	return null;
+	}
+    
     /**
      * Unión: Regresa una lista que contiene los elementos de dos listas dadas, quita los duplicados
      *
@@ -41,16 +38,17 @@ public class Practica1 {
      * y asi poder cubrir una mayor cantidad de casos y evitar que el algoritmo sea fácil de "romper"
      **/
     public static void Union(Lista<Integer> lista1,Lista<Integer> lista2) {
+	Iterator<Integer> iter = lista2.iterator();
 
-	Iterator<Integer> iterator = lista.iterator();
-
-	while(iterator.hasNext()){
-	    if(lista1.contains(lista2.next())){
-		lista2.pop(lista2.next());
-		lista2.next() = lista.next.next();		
+	while(iter.hasNext()){
+	    if(lista1.contains(iter.next())){
+		Integer aux = iter.next();
+		lista2.delete(aux);
+		iter.next();
 	    }else{
-		lista1.add(lista2.next());
-		lista2.next = lista.next.next();		
+		Integer elemen = iter.next();
+		lista1.add(elemen);
+		iter.next();        
 	    }//fin if-else
 	}//Fin while
 	return;
@@ -69,21 +67,20 @@ public class Practica1 {
      * de los elementos al recorrerlo y de esta manera, poder notar que elementos no se encuentran repetidos, eliminarlos y después eliminar los duplicados.
      **/
     public static void Interseccion(Lista<Integer> lista,Lista<Integer> lista2){
+	Iterator<Integer> iter = lista2.iterator();
 
-	Iterator<Integer> iterator = lista.iterator();
-
-	while(iterator.hasNext()){
-	    if(lista.contains(lista2.next())){
-		lista.add(lista2.next());
-		lista2.next() = lista.next.next();		
-	    }else{
-		lista2.pop(lista2.next());
-		lista2.next() = lista.next.next;		
+	while(iter.hasNext()){
+	    if(lista.contains(iter.next())){//Lo deja y pasa al siguiente
+		iter.next();
+	    }else{//Lo elimina y pasa al siguiente
+		Integer elemen = iter.next();
+		lista2.delete(elemen);
+		iter.next();        
 	    }//Fin if-else
 	}//Fin while
+	lista.empty();//Vaciamos lista1	
 	return;
     }
-
 
 
     public static void main(String[] args) {
